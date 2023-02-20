@@ -1,10 +1,10 @@
-# A and B are executables you want to compare, gen takes int 
-# as command line arg. Usage: 'sh stress.sh'
+# Usage: 'sh stress.sh'
+# A_gen takes in i as a seed in stdin
 for((i = 1; ; ++i)); do
     echo $i
-    ./gen $i > int
-    ./A < int > out1
-    ./B < int > out2
-    diff -w out1 out2 || break
-    # diff -w <(./A < int) <(./B < int) || break
+    echo $i > Agenin
+    ./A_gen < Agenin > int
+    ./A < int > Aout
+    ./A_naive < int > Anaiveout
+    diff -w Aout Anaiveout || break
 done
