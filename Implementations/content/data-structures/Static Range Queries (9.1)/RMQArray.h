@@ -19,7 +19,7 @@ tcT, int SZ, int JMP> struct RMQ {
 			for(int i = 0; i < upper; i++) jmp[j][i] = min(jmp[j-1][i], jmp[j-1][i+(1<<(j-1))]);
 		}
 	}
-	int query(int l, int r) {
+	T query(int l, int r) {
 		assert(l <= r); int d = level(r-l+1);
 		return min(jmp[d][l],jmp[d][r-(1<<d)+1]); }
 };
