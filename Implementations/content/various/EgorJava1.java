@@ -1,3 +1,7 @@
+/**
+* Description: Java Decimals.
+*/
+
 import java.util.*;
 import java.math.BigInteger;
 import java.math.BigDecimal;
