@@ -20,8 +20,8 @@ suf="""</tabTrigger>
 
 ####### file paths
 
-USACO="/Users/benq/Documents/USACO" # location of github repository
-SUBL="/Users/benq/Library/Application Support/Sublime Text 3/Packages/User"
+USACO="/Users/rqi/Documents/Github/USACO" # location of github repository
+SUBL="/Users/rqi/Library/Application Support/Sublime Text 3/Packages/User"
 LOC=SUBL+"/algos/" # location where you want to place snippets
 
 if os.path.exists(LOC): # remove LOC if it already exists
