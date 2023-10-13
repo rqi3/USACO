@@ -18,7 +18,7 @@ using vpi = V<pi>;
 #define pb push_back
 #define bk back()
 
-const int MOD = 1e9+7;
+// const int MOD = 1e9+7; //comment out for Semyon
 
 tcT> bool ckmin(T& a, const T& b) {
 	return b < a ? a = b, 1 : 0; } // set a = min(a,b)
