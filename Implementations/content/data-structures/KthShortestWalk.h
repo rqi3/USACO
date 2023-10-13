@@ -1,11 +1,9 @@
 /**
- * Description: Persistent meldable heap.
+ * Description: Kth Shortest Walk
  * Time: O(\log N) per meld
  * Memory: O(\log N) per meld
  * Source:
  	* https://judge.yosupo.jp/submission/11843
- 	* https://en.wikipedia.org/wiki/Leftist_tree
- * Verification: See Kth Walk
  */
 
 const ll INF = 1e18;
@@ -62,11 +60,9 @@ int main() {
 			if (a.f > dist[a.s]) continue;
 			seq.pb(a.s); each(t,radj[a.s]) ad(t[0],a.f+t[1],{t[2],a.s}); // edge index, vert
 		}
-		//F0R(i,N) dbg(i,dist[i],pre[i]);
 		each(t,seq) {
 			each(u,adj[t]) if (u[2] != pre[t].f && dist[u[0]] != INF) {
 				ll cost = dist[u[0]]+u[1]-dist[t];
-				//dbg("ADDCAND",t,cost,u[0]); assert(cost >= 0);
 				cand[t] = ins(cand[t],{cost,u[0]});
 			}
 			if (pre[t].f != -1) cand[t] = meld(cand[t],cand[pre[t].s]);
@@ -74,7 +70,6 @@ int main() {
 				cout << dist[t] << "\n"; K --;
 				if (cand[t]) ans.push(state{t,cand[t],dist[t]+cand[t]->v.f});
 			}
-			//if (cand[t]) pq.push(state{t,cand[t],res+cand[t]->v.f});
 		}
 	}
 	F0R(i,K) {
@@ -83,26 +78,15 @@ int main() {
 			continue;
 		}
 		auto a = ans.top(); ans.pop();
-		int vert = a.vert; //dbg("HA",vert,a.p->l != NULL, a.p->r != NULL);
-		//if (a.p->l != NULL) dbg("LEF",a.p->l->v);
+		int vert = a.vert;
 		cout << a.cost << "\n";
 		if (a.p->l) {
-		//dbg("OOPSL",a.p->l->v.f-a.p->v.f);
 			ans.push(state{vert,a.p->l,a.cost+a.p->l->v.f-a.p->v.f});
 		}
 		if (a.p->r) {
-		//dbg("OOPSR",a.p->r->v.f-a.p->v.f);
 			ans.push(state{vert,a.p->r,a.cost+a.p->r->v.f-a.p->v.f});
 		}
-		int V = a.p->v.s; //dbg("OH",a.p->v);
+		int V = a.p->v.s;
 		if (cand[V]) ans.push(state{V,cand[V],a.cost+cand[V]->v.f});
 	}
-	// you should actually read the stuff at the bottom
 }
-
-/* stuff you should look for
-	* int overflow, array bounds
-	* special cases (n=1?)
-	* do smth instead of nothing and stay organized
-	* WRITE STUFF DOWN
-*/
