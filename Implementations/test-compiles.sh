@@ -6,5 +6,5 @@ echo "
 #include \"../content/$FILE\"
 " >build/temp.cpp
 # g++ -Wall -Wextra -Wfatal-errors -Wconversion -std=c++11 build/temp.cpp && rm a.out build/temp.cpp
-g++ -Wall -Wextra -Wfatal-errors -std=c++11 build/temp.cpp && rm a.out build/temp.cpp
+g++-14 -Wall -Wextra -Wfatal-errors -std=c++14 build/temp.cpp && rm a.out build/temp.cpp
 # g++ -std=c++14 build/temp.cpp && rm a.out build/temp.cpp
