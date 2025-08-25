@@ -31,7 +31,7 @@ When doing DP on intervals: $a[i][j] = \min_{i < k < j}(a[i][k] + a[k][j]) + f(i
 	\subsection{Pragmas}
 	
 		\begin{itemize}
-			\item \lstinline{#pragma GCC optimize ("Ofast")} will make GCC auto-vectorize for loops and optimizes floating points better (assumes associativity and turns off denormals).
+			\item \lstinline{#pragma GCC optimize ("Ofast, unroll-loops")} will make GCC auto-vectorize for loops and optimizes floating points better (assumes associativity and turns off denormals).
 			\item \lstinline{#pragma GCC target ("avx,avx2")} can double performance of vectorized code, but causes crashes on old machines. Also consider older \lstinline{#pragma GCC target ("sse4")}.
 			\item \lstinline{#pragma GCC optimize ("trapv")} kills the program on integer overflows (but is really slow).
 		\end{itemize}
