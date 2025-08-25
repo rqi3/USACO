@@ -1,5 +1,5 @@
 /**
- * Description: running tests. pc2submit E.cpp
+ * Description: (Usage: python TestRunner.py E) (To Submit: pc2submit E.cpp)
  * Source: own
  */
 import glob; import sys; import os
