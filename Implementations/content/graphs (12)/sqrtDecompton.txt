@@ -1,0 +1,16 @@
+Square Root Decomposition and Tree Algorithms Guide
+
+HLD generally suffices. If not, here are some common strategies:
+
+* Rebuild the tree after every sqrt(N) queries.
+* Consider vertices with > or < sqrt(N) degree separately.
+* For subtree updates, note that there are O(sqrt(N)) distinct sizes among child subtrees of any node.
+
+Block Tree: Use a DFS to split edges into contiguous groups of size sqrt(N) to 2*sqrt(N).
+
+Mo's Algorithm for Tree Paths: Maintain an array of vertices where each one appears twice, once when a DFS enters the vertex (st) and one when the DFS exits (en). For a tree path u <-> v such that st[u] < st[v]:
+
+* If u is an ancestor of v, query [st[u], st[v]].
+* Otherwise, query [en[u], st[v]] and consider LCA(u,v) separately.
+
+Solutions with worse complexities can be faster if you optimize the operations that are performed most frequently. Use arrays instead of vectors whenever possible. Iterating over an array in order is faster than iterating through the same array in some other order (ex. one given by a random permutation) or DFSing on a tree of the same size. Also, the difference between sqrt(N) and the optimal block (or buffer) size can be quite large. Try up to 5x smaller or larger (at least).
